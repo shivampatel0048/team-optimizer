@@ -9,7 +9,7 @@ const NotFoundPage = () => {
     return (
         <div className="bg-gradient-to-b from-[#F7F9F3] to-white min-h-screen pt-24 pb-16 flex items-center">
             <Container>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 -mt-12 lg:mt-0 items-center">
                     {/* Text content */}
                     <div className="order-2 lg:order-1 text-center lg:text-left">
                         <div className="inline-block px-3 py-1 bg-[#A7C957] bg-opacity-20 rounded-full mb-4">
