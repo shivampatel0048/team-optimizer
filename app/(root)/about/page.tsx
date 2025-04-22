@@ -47,7 +47,7 @@ const AboutPage = () => {
         </Container>
 
         {/* Bottom wave separator */}
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="absolute bottom-0 left-0 right-0 overflow-hidden translate-y-1">
           <svg viewBox="0 0 1440 120" className="w-full h-auto fill-[#F7F9F3]">
             <path d="M0,32L48,48C96,64,192,96,288,96C384,96,480,64,576,48C672,32,768,32,864,48C960,64,1056,96,1152,96C1248,96,1344,64,1392,48L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z" />
           </svg>
