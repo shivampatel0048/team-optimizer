@@ -6,25 +6,25 @@ import Link from 'next/link'
 const HowItWorks = () => {
     const steps = [
         {
-            number: '01',
+            number: '1',
             title: 'Farmers List Crops',
             description: 'Take a photo, add details about your produce, quantity and set your price.',
             icon: '/images/step-1.jpg'
         },
         {
-            number: '02',
+            number: '2',
             title: 'Buyers Make Offers',
             description: 'Interested buyers will send purchase requests with their price offers.',
             icon: '/images/step-2.jpg'
         },
         {
-            number: '03',
+            number: '3',
             title: 'Farmers Accept Offers',
             description: 'Review and accept the best offers from verified buyers.',
             icon: '/images/step-3.jpg'
         },
         {
-            number: '04',
+            number: '4',
             title: 'Payment & Logistics',
             description: 'Secure payment and assistance with transportation options.',
             icon: '/images/step-4.jpg'
@@ -32,7 +32,7 @@ const HowItWorks = () => {
     ]
 
     return (
-        <section className="py-16 bg-[#F7F9F3]">
+        <section id='howItWorks' className="py-16 bg-[#F7F9F3]">
             <Container>
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold mb-3 text-[#294D25]">How It Works</h2>

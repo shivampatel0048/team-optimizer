@@ -2,7 +2,29 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['github.com'], // Add github.com to allowed image domains
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+        port: '',
+        pathname: '**',
+      }
+    ],
   },
 };
 
