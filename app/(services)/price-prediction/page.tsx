@@ -105,7 +105,7 @@ const PricePredictionPage = () => {
 
                         {/* Trending Prices */}
                         <div className="animate-fade-in-up delay-300">
-                            <h3 className="text-sm font-medium text-[#DDE7C7] mb-4">Today's Trending Prices</h3>
+                            <h3 className="text-sm font-medium text-[#DDE7C7] mb-4">Today&apos;s Trending Prices</h3>
                             <div className="inline-flex flex-wrap justify-center gap-4">
                                 {trendingPrices.map((item, index) => (
                                     <div key={index} className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-3">
