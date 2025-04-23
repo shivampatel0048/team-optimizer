@@ -70,6 +70,12 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
+## Backend Repository
+
+```bash
+git clone https://github.com/Piyushrathoree/TeamOptimizers-backend.git
+```
+
 ## Project Structure
 
 ```
