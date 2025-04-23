@@ -18,7 +18,7 @@ const Navbar = () => {
     }
 
     useEffect(() => {
-        if (pathname !== '/') {
+        if (pathname.startsWith('/marketplace') && pathname !== '/marketplace') {
             setScrolled(true)
         }
         const handleScroll = () => {
@@ -43,7 +43,7 @@ const Navbar = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside)
     }, [])
 
-    if(pathname.includes('/farmer')) return null
+    if (pathname.includes('/farmer')) return null
     if (pathname.includes('/buyer')) return null
     if (pathname.includes('/admin')) return null
 
@@ -80,8 +80,8 @@ const Navbar = () => {
                         <Link href="/marketplace" className={`${scrolled ? 'text-[#386641]' : 'text-white'} hover:text-[#A7C957] transition-colors`}>
                             Marketplace
                         </Link>
-                        <Link href="/pricing" className={`${scrolled ? 'text-[#386641]' : 'text-white'} hover:text-[#A7C957] transition-colors`}>
-                            Pricing
+                        <Link href="/crop-prediction" className={`${scrolled ? 'text-[#386641]' : 'text-white'} hover:text-[#A7C957] transition-colors`}>
+                            Crop Prediction
                         </Link>
                         <Link href="/about" className={`${scrolled ? 'text-[#386641]' : 'text-white'} hover:text-[#A7C957] transition-colors`}>
                             About Us
@@ -140,8 +140,8 @@ const Navbar = () => {
                             <Link href="/marketplace" onClick={closeMobileMenu} className="text-[#386641] hover:text-[#A7C957] transition-colors px-2 py-1">
                                 Marketplace
                             </Link>
-                            <Link href="/pricing" onClick={closeMobileMenu} className="text-[#386641] hover:text-[#A7C957] transition-colors px-2 py-1">
-                                Pricing
+                            <Link href="/crop-prediction" onClick={closeMobileMenu} className="text-[#386641] hover:text-[#A7C957] transition-colors px-2 py-1">
+                                Crop Prediction
                             </Link>
                             <Link href="/about" onClick={closeMobileMenu} className="text-[#386641] hover:text-[#A7C957] transition-colors px-2 py-1">
                                 About Us
