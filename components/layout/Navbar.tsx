@@ -21,6 +21,9 @@ const Navbar = () => {
         if (pathname.startsWith('/marketplace') && pathname !== '/marketplace') {
             setScrolled(true)
         }
+        if (pathname === '/login' || pathname === '/signup') {
+            setScrolled(true)
+        }
         const handleScroll = () => {
             const isScrolled = window.scrollY > 10
             if (isScrolled !== scrolled) {
