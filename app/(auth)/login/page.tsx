@@ -52,7 +52,9 @@ const LoginPage = () => {
                 description: `Logged in as ${response.user.name}`
             });
 
-            router.push('/dashboard');
+            // Redirect based on user role
+            const redirectPath = response.user.role === 'user' ? '/farmer' : '/buyer';
+            router.push(redirectPath);
         } catch (error: any) {
             const errorMessage = error.message || 'Login failed. Please try again.';
             setError(errorMessage);

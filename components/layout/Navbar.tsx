@@ -43,6 +43,10 @@ const Navbar = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside)
     }, [])
 
+    if(pathname.includes('/farmer')) return null
+    if (pathname.includes('/buyer')) return null
+    if (pathname.includes('/admin')) return null
+
     return (
         <nav
             ref={navRef}

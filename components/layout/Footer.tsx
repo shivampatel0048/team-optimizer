@@ -1,8 +1,15 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import { Container } from '@/components/ui/container'
+import { usePathname } from 'next/navigation'
 
 const Footer = () => {
+    const pathname = usePathname()
+    if (pathname.includes('/farmer')) return null
+    if (pathname.includes('/buyer')) return null
+    if (pathname.includes('/admin')) return null
     return (
         <footer className="bg-[#294D25] text-white pt-16 pb-8 border-t border-white/20">
             <Container>

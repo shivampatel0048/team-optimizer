@@ -22,7 +22,11 @@ export default function FarmerSidebar() {
             </div>
             <nav className="flex-1 px-2 py-4 space-y-1">
                 {links.map((link) => {
-                    const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
+                    // Updated active state logic to correctly handle nested routes
+                    const isActive = pathname === link.href ||
+                        (pathname.startsWith(`${link.href}/`) && link.href !== '/farmer') ||
+                        (link.href === '/farmer' && pathname === '/farmer');
+
                     return (
                         <Link
                             key={link.name}

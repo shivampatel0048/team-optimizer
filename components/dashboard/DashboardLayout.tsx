@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
 
 interface DashboardLayoutProps {
     children: ReactNode;
@@ -9,12 +10,24 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children, sidebar }: DashboardLayoutProps) {
     const pathname = usePathname();
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
         <div className="flex h-screen bg-[#F7F9F3]">
+            {/* Mobile sidebar overlay */}
+            {sidebarOpen && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+                    onClick={() => setSidebarOpen(false)}
+                ></div>
+            )}
+
             {/* Sidebar */}
-            <div className="hidden md:flex md:w-64 md:flex-col">
-                <div className="flex flex-col flex-grow pt-5 overflow-y-auto bg-white border-r border-gray-200 shadow-sm">
+            <div className={cn(
+                "fixed inset-y-0 left-0 w-64 transform transition-transform duration-300 ease-in-out z-50 md:relative md:translate-x-0 md:z-0",
+                sidebarOpen ? "translate-x-0" : "-translate-x-full"
+            )}>
+                <div className="flex flex-col flex-grow h-full pt-5 overflow-y-auto bg-white border-r border-gray-200 shadow-sm">
                     {sidebar}
                 </div>
             </div>
@@ -23,10 +36,16 @@ export default function DashboardLayout({ children, sidebar }: DashboardLayoutPr
             <div className="flex flex-col flex-1 overflow-hidden">
                 {/* Top Navigation */}
                 <div className="flex items-center justify-between h-16 px-4 bg-white border-b border-gray-200 shadow-sm">
-                    <button type="button" className="md:hidden text-gray-600 focus:outline-none">
-                        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                    <button
+                        type="button"
+                        className="md:hidden text-gray-600 focus:outline-none"
+                        onClick={() => setSidebarOpen(!sidebarOpen)}
+                    >
+                        {sidebarOpen ? (
+                            <X className="h-6 w-6" />
+                        ) : (
+                            <Menu className="h-6 w-6" />
+                        )}
                     </button>
                     <div className="text-xl font-semibold text-[#294D25]">
                         {pathname.includes('/farmer') && 'Farmer Dashboard'}

@@ -15,7 +15,8 @@ const RegisterPage = () => {
         email: '',
         password: '',
         confirmPassword: '',
-        agreeTerms: false
+        agreeTerms: false,
+        role: 'user' // default to farmer (user)
     });
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -46,14 +47,15 @@ const RegisterPage = () => {
                 name: formData.name,
                 email: formData.email,
                 password: formData.password,
-                role: 'user' // Default role for registration
+                // @ts-expect-error is necessary typo 
+                role: formData.role
             });
 
             toast.success('Registration successful! Please verify your email.');
-
             setClientCookie('token', response.token);
 
-            router.push('/dashboard');
+            // Redirect based on role
+            router.push(formData.role === 'user' ? '/farmer' : '/buyer');
         } catch (error: any) {
             const errorMessage = error.error ?? 'Registration failed. Please try again.';
             setError(errorMessage);
@@ -74,6 +76,53 @@ const RegisterPage = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+                    {/* Role Selection */}
+                    <div className="bg-white p-3 rounded-lg border border-gray-200">
+                        <label className="block text-sm font-medium text-gray-700 mb-3">
+                            I want to register as:
+                        </label>
+                        <div className="flex gap-4">
+                            <label
+                                className={`flex-1 flex items-center justify-center p-3 rounded-lg cursor-pointer border-2 transition-all ${formData.role === 'user'
+                                    ? 'border-[#386641] bg-[#F7F9F3] text-[#386641]'
+                                    : 'border-gray-200 hover:border-gray-300'
+                                    }`}
+                            >
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    value="user"
+                                    checked={formData.role === 'user'}
+                                    onChange={handleChange}
+                                    className="sr-only"
+                                />
+                                <span className="font-medium">Farmer</span>
+                            </label>
+                            <label
+                                className={`flex-1 flex items-center justify-center p-3 rounded-lg cursor-pointer border-2 transition-all ${formData.role === 'buyer'
+                                    ? 'border-[#386641] bg-[#F7F9F3] text-[#386641]'
+                                    : 'border-gray-200 hover:border-gray-300'
+                                    }`}
+                            >
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    value="buyer"
+                                    checked={formData.role === 'buyer'}
+                                    onChange={handleChange}
+                                    className="sr-only"
+                                />
+                                <span className="font-medium">Buyer</span>
+                            </label>
+                        </div>
+                        <p className="mt-2 text-xs text-gray-500">
+                            {formData.role === 'user'
+                                ? "Select 'Farmer' if you want to sell your agricultural products"
+                                : "Select 'Buyer' if you want to purchase agricultural products"
+                            }
+                        </p>
+                    </div>
+
                     <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                             Full Name
