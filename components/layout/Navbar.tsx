@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import GoogleTranslate from '@/components/ui/GoogleTranslate'
 import { usePathname } from 'next/navigation'
-
+import { ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false)
@@ -83,9 +83,26 @@ const Navbar = () => {
                         <Link href="/marketplace" className={`${scrolled ? 'text-[#386641]' : 'text-white'} hover:text-[#A7C957] transition-colors`}>
                             Marketplace
                         </Link>
-                        <Link href="/crop-prediction" className={`${scrolled ? 'text-[#386641]' : 'text-white'} hover:text-[#A7C957] transition-colors`}>
-                            Crop Prediction
-                        </Link>
+                        <div className="relative group">
+                            <button className={`flex items-center space-x-1 ${scrolled ? 'text-[#386641]' : 'text-white'} hover:text-[#A7C957] transition-colors`}>
+                                <span>Features</span>
+                                <ChevronDown className="w-4 h-4" />
+                            </button>
+                            <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                                <Link
+                                    href="/crop-prediction"
+                                    className="block px-4 py-2 text-[#386641] hover:bg-[#F7F9F3] rounded-t-lg"
+                                >
+                                    Crop Prediction
+                                </Link>
+                                <Link
+                                    href="/price-prediction"
+                                    className="block px-4 py-2 text-[#386641] hover:bg-[#F7F9F3] rounded-b-lg"
+                                >
+                                    Price Prediction
+                                </Link>
+                            </div>
+                        </div>
                         <Link href="/about" className={`${scrolled ? 'text-[#386641]' : 'text-white'} hover:text-[#A7C957] transition-colors`}>
                             About Us
                         </Link>
@@ -143,12 +160,15 @@ const Navbar = () => {
                             <Link href="/marketplace" onClick={closeMobileMenu} className="text-[#386641] hover:text-[#A7C957] transition-colors px-2 py-1">
                                 Marketplace
                             </Link>
-                            <Link href="/crop-prediction" onClick={closeMobileMenu} className="text-[#386641] hover:text-[#A7C957] transition-colors px-2 py-1">
-                                Crop Prediction
-                            </Link>
-                            <Link href="/about" onClick={closeMobileMenu} className="text-[#386641] hover:text-[#A7C957] transition-colors px-2 py-1">
-                                About Us
-                            </Link>
+                            <div className="pl-2 space-y-2">
+                                <div className="text-sm font-medium text-gray-500">Features</div>
+                                <Link href="/crop-prediction" onClick={closeMobileMenu} className="block text-[#386641] hover:text-[#A7C957] transition-colors px-2 py-1">
+                                    Crop Prediction
+                                </Link>
+                                <Link href="/price-prediction" onClick={closeMobileMenu} className="block text-[#386641] hover:text-[#A7C957] transition-colors px-2 py-1">
+                                    Price Prediction
+                                </Link>
+                            </div>
                             <div className="border-t border-gray-200 pt-2 flex flex-col space-y-2">
                                 <Link href="/login" onClick={closeMobileMenu} className="text-[#386641] hover:text-[#A7C957] transition-colors px-2 py-1">
                                     Log in

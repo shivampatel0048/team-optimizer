@@ -16,7 +16,7 @@ const languages = [
     { label: 'മലയാളം', value: '/auto/ml' }
 ];
 
-const GoogleTranslate = ({scrolled}:{scrolled:boolean}) => {
+const GoogleTranslate = ({scrolled}:{scrolled?:boolean}) => {
     const [selected, setSelected] = useState<string | null>(null);
     const [isOpen, setIsOpen] = useState(false);
 

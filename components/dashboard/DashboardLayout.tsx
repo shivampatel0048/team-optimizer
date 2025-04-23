@@ -2,6 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import GoogleTranslate from '../ui/GoogleTranslate';
 
 interface DashboardLayoutProps {
     children: ReactNode;
@@ -60,6 +61,9 @@ export default function DashboardLayout({ children, sidebar }: DashboardLayoutPr
                                 </svg>
                             </button>
                         </div>
+
+                        <GoogleTranslate scrolled={true} />
+                        
                         <div className="h-8 w-8 rounded-full bg-[#386641] text-white flex items-center justify-center">
                             <span className="text-sm font-medium">US</span>
                         </div>
